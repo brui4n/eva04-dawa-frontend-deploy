@@ -166,19 +166,41 @@ export default function LandingPage() {
               {courses.map((course) => (
                 <div key={course.id} className="glass-card" style={{ padding: '24px', display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
                   <div>
-                    <div style={{
-                      height: '160px',
-                      background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)',
-                      borderRadius: 'var(--radius-sm)',
-                      marginBottom: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '3rem',
-                      border: '1px solid rgba(255, 255, 255, 0.05)'
-                    }}>
-                      📚
-                    </div>
+                    {course.imageUrl ? (
+                      <div style={{
+                        height: '160px',
+                        borderRadius: 'var(--radius-sm)',
+                        marginBottom: '16px',
+                        overflow: 'hidden',
+                        border: '1px solid rgba(255, 255, 255, 0.05)',
+                        position: 'relative'
+                      }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={course.imageUrl}
+                          alt={course.title}
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover'
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <div style={{
+                        height: '160px',
+                        background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)',
+                        borderRadius: 'var(--radius-sm)',
+                        marginBottom: '16px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '3rem',
+                        border: '1px solid rgba(255, 255, 255, 0.05)'
+                      }}>
+                        📚
+                      </div>
+                    )}
                     <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>{course.title}</h3>
                     <p style={{
                       fontSize: '0.9rem',
